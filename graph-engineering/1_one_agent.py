@@ -36,7 +36,7 @@ REQUEST = " ".join(sys.argv[1:]) or ("Add gift wrap at £3 per item. total(baske
 ENGINEER = """You are a software engineer. You're in the folder of the shop, a small Python project, and you work through the shell. Plan the change you're asked for, make it, and check your work. Then reply with a short report: what you changed, and whether the request is done."""
 
 start = time.time()
-answer, tokens = agent(ENGINEER, REQUEST, tools=[shell]) # one node: plans, builds and judges its own work
+answer, tokens = agent(ENGINEER, REQUEST, tools=[shell])   # one node: plans, builds and judges its own work
 print(f"● agent    {time.time() - start:6.1f}s {tokens:>8,} tokens")
 print("> " + answer.replace("\n", "\n  "))
 print(f"■ done     {time.time() - start:6.1f}s {tokens:>8,} tokens")

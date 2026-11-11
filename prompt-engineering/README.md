@@ -1366,4 +1366,6 @@ This order desk is one call to a model. To put a model in a loop that acts on it
 
 ## License
 
-The code (the Python files and `orders/`) is under the [MIT License](../LICENSE). The written course (this README) is under [Creative Commons Attribution 4.0](../LICENSE-CC-BY-4.0) (CC BY 4.0).
+The code (the Python files and `orders/`) is under the [MIT License](../LICENSE). The written course (this README) is under [Creative Commons Attribution 4.0](../LICENSE-CC-BY-4.0) (CC BY 4.0): you can share and adapt it, for any purpose, as long as you credit Chase Dovey and link back to this repo.
+
+Copyright © 2026 Chase Dovey.

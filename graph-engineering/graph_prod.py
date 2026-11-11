@@ -121,7 +121,7 @@ def save(state):                                         # state: written after 
 def resume(request):                                     # failure: an unfinished run of the same request carries on from its last checkpoint
     if not os.path.exists(STATE): return None
     state = json.load(open(STATE))
-    if state["request"] != request or state["at"] == END: return None
+    if state.get("request") != request or state.get("at", END) == END: return None
     print(f"↻ resuming at {state['at']}, after {' → '.join(state['route'])}")
     return state
 
