@@ -91,13 +91,13 @@ def load():                                              # state: where things s
     return json.load(open(STATE)) if os.path.exists(STATE) else {"runs": 0, "tokens": 0, "stalled": 0}
 
 def save(state, results, said, tokens):                  # state: what the next run should know, written down and committed
-    before = state.get("features", {})
+    before = state.get("features", {})                   # stop: what passed before this run
     state["runs"] += 1
     state["features"] = {name: not done.returncode for name, done in results.items()}   # state: passes, as the check found it
     state["failures"] = failures(results)                # state: what failed, in the tests' words
     state["notes"] = said                                # state: the run's final message, a note for the next
     state["tokens"] += tokens                            # stop: the budget's count, kept here so a restart can't reset it
-    newly = [name for name, ok in state["features"].items() if ok and not before.get(name)]
+    newly = [name for name, ok in state["features"].items() if ok and not before.get(name)]   # stop: what this run got passing
     state["stalled"] = 0 if newly else state["stalled"] + 1   # stop: runs in a row with nothing newly passing
     json.dump(state, open(STATE, "w"), indent=2)
     passing = sum(state["features"].values())

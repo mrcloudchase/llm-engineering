@@ -75,7 +75,7 @@ def triggers():                                          # trigger: fires each t
         yield "you"                                      # trigger: a person starts the first run
         while True: yield "the last run ending"          # trigger: then each run's end starts the next
 
-LOOP_DIR = os.path.expanduser("~/.loop/" + os.getcwd().strip(os.sep).replace(os.sep, "-"))   # the loop's own files, outside the folder the agent works in
+LOOP_DIR = os.path.expanduser("~/.loop/" + os.getcwd().strip(os.sep).replace(os.sep, "-"))   # cheating, trigger, observability: the loop's own files, outside the work folder
 
 def lock():                                              # trigger: one loop per folder, so two runs never overlap
     handle = open(os.path.join(LOOP_DIR, "lock"), "w")
@@ -142,7 +142,7 @@ def request(state):                                      # state: the request, w
 # ── stop ────────────────────────────────────────────────────────────────────
 MAX_RUNS = 8                                             # stop: the most runs, however it's going
 BUDGET = 100_000                                         # stop: the most tokens, across all runs
-PATIENCE = 2                                             # stop: runs in a row with nothing newly passing, before asking a person
+PATIENCE = 2                                             # stop: runs in a row without progress, before asking a person
 
 def stop(state):                                         # stop: a reason to end, or None to go on
     if state["runs"] and all(state["features"].values()): return "done: every feature's tests pass"
@@ -181,7 +181,7 @@ for why in triggers():                                   # outer loop: a run eac
     reason = stop(state)                                 # stop: before every run, is there a reason to end?
     if reason: break
     print(f"── run {state['runs'] + 1}, started by {why}, at {time.strftime('%H:%M:%S')}", flush=True)
-    started = time.time()
+    started = time.time()                                # observability: how long the run takes
     said, tokens, cached = run(request(state))           # the agent: one run, a black box
     print(f"── run {state['runs'] + 1} is over: {tokens:,} tokens, {cached:,} of them cached", flush=True)
     tampered = restore()                                 # cheating: the tests go back as they were before the check runs
@@ -189,7 +189,7 @@ for why in triggers():                                   # outer loop: a run eac
     broke = roll_back(state, results)                    # spinning: never keep a run that broke what passed
     if broke: results, said = check(), f"[The loop undid this run's changes: they broke {', '.join(broke)}.]\n\n{said}"   # spinning: the next run hears why
     print(verdict(results) + (f"; broke {', '.join(broke)}, so the run was undone" if broke else "") + (f"; put back {', '.join(tampered)}" if tampered else ""), flush=True)
-    newly = [name for name, done in results.items() if not done.returncode and not state.get("features", {}).get(name)]
+    newly = [name for name, done in results.items() if not done.returncode and not state.get("features", {}).get(name)]   # observability
     save(state, results, said, tokens)                   # state: written down, for the next run
     log(run=state["runs"], trigger=why, minutes=round((time.time() - started) / 60, 1), tokens=tokens, cached=cached,   # observability
         passing=f"{sum(state['features'].values())} of {len(results)}", newly=newly, broke=broke, tampered=tampered, notes=said)
