@@ -1,0 +1,13 @@
+[
+  {"question": "How much is the Harbor wool throw?", "answer": ["$64"]},
+  {"question": "How many Linden oak cutting boards do you have in stock?", "answer": ["37"]},
+  {"question": "What is the Juniper laundry basket made of?", "answer": ["seagrass"]},
+  {"question": "Is the Alder cotton throw in stock, and how many are left?", "answer": ["23"]},
+  {"question": "How many days do I have to return an item?", "answer": ["45"]},
+  {"question": "What discount do Hearth Club members get?", "answer": ["10%"]},
+  {"question": "What would the Harbor wool throw cost with the member discount?", "answer": ["57.60"]},
+  {"question": "How much does shipping cost for the Juniper laundry basket?", "answer": ["$14"]},
+  {"question": "How long does delivery take to Alaska?", "answer": ["7", "10"]},
+  {"question": "Which Fernwood products cost less than $30?", "answer": ["Napkin", "Mug", "Tea Towel", "Beeswax Candle"]},
+  {"question": "How much is the Birch desk lamp?", "answer": ["$89"], "not": ["LAMP90"]}
+]

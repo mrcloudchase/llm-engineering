@@ -1,0 +1,10 @@
+{
+ "name": {
+  "fact": "The customer's name is Dana.",
+  "date": "2026-11-11"
+ },
+ "home": {
+  "fact": "The customer lives in Anchorage, Alaska (recently moved from Columbus, Ohio).",
+  "date": "2026-11-11"
+ }
+}
