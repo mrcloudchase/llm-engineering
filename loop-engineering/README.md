@@ -1,5 +1,7 @@
 # Loop Engineering
 
+By **[Chase Dovey](https://cdovey.dev/)** · [Average Joes Lab](https://github.com/averagejoeslab)
+
 *The purpose of this module is to teach Loop Engineering*
 
 Loop engineering is the practice of designing what starts, checks and re-runs an agent until the work is done. To do it, you first need to know what one run of an agent can and can't do. Then we'll build a loop piece by piece around a backlog too big for one run, evaluate it on backlogs whose endings we know, and get it ready for production.
@@ -15,7 +17,7 @@ You've worked a loop like this if you've ever worked shifts. Imagine you're on t
 **Work:** you finish aisle 7, and count aisle 8.  
 **Leave a sheet:** at six, your shift ends, wherever you are. You write the sheet for the next shift: what's done, what's left, what to watch for. Then you go home, and everything else you knew goes with you.  
 **Check:** in the morning, the supervisor doesn't take the sheet's word for it. She recounts a shelf in aisle 8, and finds a box you missed.  
-**Again, or stop:** the count isn't done, so the next night another shift starts, from the sheet. The job ends when the count is done and checked, or the money for it runs out, or three nights go by with nothing new counted and someone has to go and find out why.
+**Again, or stop:** the count isn't done, so the next night another shift starts, from the sheet. The job ends when the count is done and checked, or the money for it runs out, or two nights go by with nothing new counted and someone has to go and find out why.
 
 No one worker finished the job. The schedule, the sheet and the supervisor did:
 
@@ -35,7 +37,7 @@ In short: start a shift, check it, carry the sheet to the next, and go again or 
 
 A loop runs an agent, so we start from one. An *agent* is a model inside a *harness*: a program that sends the model a request, runs the commands the model asks for, sends back what they printed, and goes again. The model observes, thinks and acts, and the harness carries each step out. Each time round is a *turn*. A *run* is one request's worth of turns: it ends when the model stops asking for commands, and its last words are its *final message*.
 
-Ours is about forty lines, and it's the same in every file of this module, under `# ── the agent: one run`. It has one tool, `shell`, and runs every command the model asks for:
+Ours is about forty lines, and every step file of this module carries the same copy, under `# ── the agent: one run`. It has one tool, `shell`, and runs every command the model asks for:
 
 ```python
 # ── the agent: one run ──────────────────────────────────────────────────────
@@ -104,7 +106,7 @@ So there are two loops. The *inner loop* is inside a run: the model asks for a c
 ```
 ┌──────────────────────────────── outer loop ────────────────────────────────┐
 │                                                                            │
-│  trigger ─► stop? ─► ┌───── one run: the inner loop ──────┐ ─► check       │
+│  trigger ─► stop? ─► ┌───── one run: the inner loop ───────┐ ─► check      │
 │     ▲         │      │ request ─► model ↔ shell ─► message │      │        │
 │     │         ▼      └─────────────────────────────────────┘      │        │
 │     │        end                                                  │        │
@@ -1363,3 +1365,9 @@ You started with an agent that could do one run and stop wherever its shift ende
 Then you evaluated it on backlogs whose endings you knew, and got it ready for production by asking six questions of the loop.
 
 That's loop engineering. Every autonomous agent is a run inside these four. An agent that runs every morning has a schedule for a trigger. A bot that fixes a failing build is triggered by the failure, checked by the build, carries its state in a branch, and stops when the build passes or it runs out of tries. A coding agent that keeps going until the tests pass is this loop, with the tests as its check. They differ in how each primitive is built. Open any of them and you'll find the same four.
+
+## License
+
+The code (the Python files and `shop/`) is under the [MIT License](../LICENSE). The written course (this README) is under [Creative Commons Attribution 4.0](../LICENSE-CC-BY-4.0) (CC BY 4.0): you can share and adapt it, for any purpose, as long as you credit Chase Dovey and link back to this repo.
+
+Copyright © 2026 Chase Dovey.
