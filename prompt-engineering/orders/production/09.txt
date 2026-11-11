@@ -1,0 +1,9 @@
+From: Nina Petrova <nina.petrova@example.com>
+Subject: order
+
+Hi,
+
+Please send me a bamboo tray and two mugs.
+
+Thanks,
+Nina
