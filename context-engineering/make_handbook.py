@@ -5,7 +5,7 @@ import os, random, shutil
 
 rng = random.Random(2026)                                # the seed: the same handbook every time
 
-# ── the pages the questions are about, written by hand ─────────────────────
+# ── the pages the questions are about, written by hand ──────────────────────
 PRODUCTS = [  # name, price, in stock, materials, size, weight, shipping class, updated, a line of its own
     ("Harbor Wool Throw", 64.00, 112, "100% merino wool", "130 x 170 cm", "1.4 kg", "standard", "2026-04-17",
      "Woven in a wide herringbone that holds its shape wash after wash."),
@@ -80,7 +80,7 @@ Hearth Club is our membership. It costs $25 a year. Members get 10% off every or
 The help desk answers by chat and email from 8 am to 8 pm Eastern, every day. For an order question, have your order number ready: it starts with HP and is in your confirmation email."""),
 }
 
-# ── the generated product pages, around them ───────────────────────────────
+# ── the generated product pages, around them ────────────────────────────────
 LINES = ["Ashby", "Bramble", "Calder", "Dover", "Ember", "Fallow", "Glen", "Harbor", "Hollis", "Ivy", "Juniper", "Kestrel",
          "Larch", "Linden", "Marlow", "Meadow", "Northcote", "Oakley", "Pembroke", "Quill", "Rowan", "Sorrel", "Thistle",
          "Tamsin", "Umber", "Vale", "Wren", "Yarrow", "Alder", "Birch", "Cedar", "Elm", "Hazel", "Maple", "Willow", "Aspen",

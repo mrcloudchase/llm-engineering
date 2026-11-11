@@ -1,5 +1,7 @@
 # Prompt Engineering
 
+By **[Chase Dovey](https://cdovey.dev/)** · [Average Joes Lab](https://github.com/averagejoeslab)
+
 *The purpose of this module is to teach Prompt Engineering*
 
 Prompt engineering is the practice of writing what the model reads. To do it, you first need to know what a prompt is and what a model does with one. Then we'll write a prompt piece by piece on a simple task, evaluate it against inputs with known right answers, and get it ready for production.

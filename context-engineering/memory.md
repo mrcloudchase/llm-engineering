@@ -1,2 +1,0 @@
-- Customer's name is Dana.
-- Dana is shopping for a gift for her sister, who is allergic to wool.

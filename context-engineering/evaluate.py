@@ -4,7 +4,7 @@
 # uv run evaluate.py 5_store.py         evaluates any step from 2 on
 import json, os, re, subprocess, sys, tempfile
 
-here = os.path.dirname(os.path.abspath(__file__))       # the module, wherever this is run from
+here = os.path.dirname(os.path.abspath(__file__))        # the module, wherever this is run from
 script = sys.argv[1] if len(sys.argv) > 1 else "context.py"
 questions = json.load(open(os.path.join(here, "questions.json")))
 
